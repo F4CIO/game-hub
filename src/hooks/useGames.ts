@@ -21,6 +21,7 @@ interface FetchGamesResponse {
   results: Game[];
 }
 
+//this can be replaced with const useGames = () => useData<Game>('/games');
 const useGames = () => {
     const [games, setGames] = useState<Game[]>([]);
     const [error, setError] = useState("");
