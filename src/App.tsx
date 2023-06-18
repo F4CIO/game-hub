@@ -6,13 +6,20 @@ import GenreList from "./components/GenreList";
 function App() {
   return (
     <Grid
-      templateAreas={{ base: '"nav" "main"', lg: '"nav nav" "aside main"' }}
+      templateAreas={{
+        base: '"nav" "main"', //basic layout
+        lg: '"nav nav" "aside main"', //large devices
+      }}
+      templateColumns={{
+        base: "1fr", //basic layout   ,1fr means take all available space
+        lg: "200px 1fr", //large devices
+      }}
     >
       <GridItem area="nav">
         <NavBar></NavBar>
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside">
+        <GridItem area="aside" padding={5}>
           <GenreList />
         </GridItem>
       </Show>
