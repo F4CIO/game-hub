@@ -18,7 +18,7 @@ const PlatformSelector = (props: Props) => {
     return (
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-          {props.selectedPlatform === null
+          {props.selectedPlatform == null
             ? "Platform"
             : props.selectedPlatform.name}
         </MenuButton>

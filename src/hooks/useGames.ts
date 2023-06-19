@@ -3,6 +3,7 @@ import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 import { Genre } from "./useGenres";
 import useData from "./useData";
+import { GameQuery } from "../App";
 
 export interface Platform{
   id:number;
@@ -50,13 +51,13 @@ interface Game {
 //     return {games, error, isLoading};
 // }
 
-const useGames = (selectedGenre:Genre|null, selectedPlatform:Platform|null) => useData<Game>(
+const useGames = (gameQuery: GameQuery) => useData<Game>(
   '/games', 
   /*this is query explained in docs of api.rawg.io/api: */ {
-    params:{genres:selectedGenre?.id, 
-    platforms: selectedPlatform?.id
+    params:{genres:gameQuery.genre?.id, 
+    platforms: gameQuery.platform?.id
   }},
-  /*deps param:*/[selectedGenre?.id, selectedPlatform?.id]
+  /*deps param:*/[gameQuery]
   );
 
 export default useGames;
