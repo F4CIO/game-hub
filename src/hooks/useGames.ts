@@ -11,6 +11,11 @@ export interface Platform{
   slug: string;
 }
 
+export interface Ordering{
+  name:string;
+  slug:string;
+}
+
 interface Game {
     id: number;
     name: string;
@@ -51,14 +56,20 @@ interface Game {
 //     return {games, error, isLoading};
 // }
 
-const useGames = (gameQuery: GameQuery) => useData<Game>(
+const useGames = (gameQuery: GameQuery) => {
+  console.log(gameQuery);
+  return useData<Game>(
   '/games', 
   /*this is query explained in docs of api.rawg.io/api: */ {
-    params:{genres:gameQuery.genre?.id, 
-    platforms: gameQuery.platform?.id
-  }},
+    params:{
+      genres:gameQuery.genre?.id, 
+      platforms: gameQuery.platform?.id,
+      ordering:gameQuery.ordering?.slug || "added"
+    }
+  },
   /*deps param:*/[gameQuery]
   );
+}
 
 export default useGames;
 export type {Game};
