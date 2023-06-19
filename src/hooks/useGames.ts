@@ -50,10 +50,13 @@ interface Game {
 //     return {games, error, isLoading};
 // }
 
-const useGames = (selectedGenre:Genre|null) => useData<Game>(
+const useGames = (selectedGenre:Genre|null, selectedPlatform:Platform|null) => useData<Game>(
   '/games', 
-  /*this is query explained in docs of api.rawg.io/api: */ {params:{genres:selectedGenre?.id}},
-  /*deps param:*/[selectedGenre?.id]
+  /*this is query explained in docs of api.rawg.io/api: */ {
+    params:{genres:selectedGenre?.id, 
+    platforms: selectedPlatform?.id
+  }},
+  /*deps param:*/[selectedGenre?.id, selectedPlatform?.id]
   );
 
 export default useGames;
