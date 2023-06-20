@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Game } from "../hooks/useGames";
 import { Card, CardBody, HStack, Heading, Image, Text } from "@chakra-ui/react";
 import PlatformIconList from "./PlatfomIconList";
@@ -9,6 +9,7 @@ import Emoji from "./Emoji";
 
 interface Props {
   game: Game;
+  children: ReactNode;
 }
 
 const GameCard = (props: Props) => {
